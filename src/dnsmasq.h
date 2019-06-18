@@ -1649,3 +1649,12 @@ int do_arp_script_run(void);
 void dump_init(void);
 void dump_packet(int mask, void *packet, size_t len, union mysockaddr *src, union mysockaddr *dst);
 #endif
+
+#ifdef HAVE_SQLITE
+#include <sqlite3.h>
+
+void db_set_file(char *file);
+void db_init(void);
+void db_cleanup(void);
+int db_check_allow(const char *domain);
+#endif

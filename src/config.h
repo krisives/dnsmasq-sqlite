@@ -171,6 +171,7 @@ RESOLVFILE
 #define HAVE_IPSET 
 #define HAVE_LOOP
 #define HAVE_DUMPFILE
+#define HAVE_SQLITE
 
 /* Build options which require external libraries.
    

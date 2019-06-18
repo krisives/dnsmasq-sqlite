@@ -167,6 +167,7 @@ struct myoption {
 #define LOPT_NAME_MATCH    355
 #define LOPT_CAA           356
 #define LOPT_SHARED_NET    357
+#define LOPT_DB_FILE       500
  
 #ifdef HAVE_GETOPT_LONG
 static const struct option opts[] =  
@@ -339,6 +340,7 @@ static const struct myoption opts[] =
     { "dhcp-rapid-commit", 0, 0, LOPT_RAPID_COMMIT },
     { "dumpfile", 1, 0, LOPT_DUMPFILE },
     { "dumpmask", 1, 0, LOPT_DUMPMASK },
+    { "db-file", 1, 0, LOPT_DB_FILE },
     { NULL, 0, 0, 0 }
   };
 
@@ -518,6 +520,7 @@ static struct {
   { LOPT_RAPID_COMMIT, OPT_RAPID_COMMIT, NULL, gettext_noop("Enables DHCPv4 Rapid Commit option."), NULL },
   { LOPT_DUMPFILE, ARG_ONE, "<path>", gettext_noop("Path to debug packet dump file"), NULL },
   { LOPT_DUMPMASK, ARG_ONE, "<hex>", gettext_noop("Mask which packets to dump"), NULL },
+  { LOPT_DB_FILE, ARG_ONE, "<path>", gettext_noop("Load domains from Sqlite .db"), NULL },
   { 0, 0, NULL, NULL, NULL }
 }; 
 
@@ -4440,6 +4443,13 @@ err:
 	
 	break;
       }
+#endif
+#ifdef HAVE_SQLITE
+    case LOPT_DB_FILE:
+    {
+      db_set_file(opt_string_alloc(arg));
+      break;
+    }
 #endif
 		
     default:
