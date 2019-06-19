@@ -10,7 +10,7 @@ domains.
 
 Building from source on Ubuntu/Debian can be done with:
 
-    sudo apt install build-essential libsqlite3-dev
+    sudo apt install build-essential pkg-config libsqlite3-dev
     git clone https://github.com/krisives/dnsmasq-sqlite.git
     cd dnsmasq-sqlite
     make
