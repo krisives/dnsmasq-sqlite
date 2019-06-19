@@ -1969,13 +1969,15 @@ size_t answer_request(struct dns_header *header, char *limit, size_t qlen,
 		log_query(F_CONFIG | F_NEG, name, &addr, NULL);
 	    }
       
-    if (!ans) {
-      if (!db_check_allow(name)) {
-        ans = 1;
-        nxdomain = 1;
-        sec_data = 0;
-      }
-    }
+            if (!ans)
+            {
+              if (!db_check_allow(name))
+              {
+                ans = 1;
+                nxdomain = 1;
+                sec_data = 0;
+              }
+            }
 	}
 
       if (!ans)
